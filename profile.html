@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile | Hotel Manager</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/app.js" defer></script>
+    <script src="/js/profile.js" defer"></script>
+  </head>
+  <body>
+    <div id="headerContainer"></div>
+    <main>
+      <section class="hero">
+        <h1 class="page-title">Your profile</h1>
+        <p class="page-subtitle">Review your details and update your password securely.</p>
+        <div class="grid two">
+          <div class="card" id="profileCard">
+            <div id="profileLoader" class="spinner" style="display: none;"></div>
+            <p id="profileStatus" class="message" style="display: none;"></p>
+            <p class="muted">Name</p>
+            <p id="profileName" class="chip">—</p>
+            <p class="muted">Username</p>
+            <p id="profileUsername" class="chip">—</p>
+            <p class="muted">Email</p>
+            <p id="profileEmail" class="chip">—</p>
+            <p class="muted">Position</p>
+            <p id="profilePosition" class="chip">—</p>
+          </div>
+          <div class="card">
+            <form id="passwordForm" class="form">
+              <div class="field">
+                <label for="currentPassword">Current password</label>
+                <input type="password" id="currentPassword" name="currentPassword" placeholder="Current password" required />
+              </div>
+              <div class="field">
+                <label for="newPassword">New password</label>
+                <input type="password" id="newPassword" name="newPassword" placeholder="New password" required />
+              </div>
+              <div class="field">
+                <label for="confirmPassword">Confirm new password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm new password" required />
+              </div>
+              <button class="btn" type="submit">Update password</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="footerContainer"></div>
+  </body>
+</html>

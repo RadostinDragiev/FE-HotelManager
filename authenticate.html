@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign in | Hotel Manager</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/app.js" defer></script>
+    <script src="/js/authenticate.js" defer></script>
+  </head>
+  <body>
+    <div id="headerContainer"></div>
+    <main>
+      <section class="hero">
+        <h1 class="page-title">Welcome back</h1>
+        <p class="page-subtitle">Access your workspace to manage the rooms effortlessly.</p>
+        <div class="card">
+          <form id="loginForm" class="form">
+            <div class="field">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" placeholder="Username" required />
+            </div>
+            <div class="field">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="Password" required />
+            </div>
+            <p id="loginMessage" class="message" style="display: none;"></p>
+            <button class="btn" id="loginSubmit" type="submit">Sign in</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <div id="footerContainer"></div>
+  </body>
+</html>

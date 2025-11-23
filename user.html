@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Details | Hotel Manager</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/app.js" defer></script>
+    <script src="/js/user.js" defer></script>
+  </head>
+  <body>
+    <div id="headerContainer"></div>
+    <main>
+      <section class="hero">
+        <div class="hero-header">
+          <div>
+            <h1 class="page-title">User details</h1>
+            <p class="page-subtitle">Review account information for this user.</p>
+          </div>
+          <a class="btn secondary" href="/users.html">Back to users</a>
+        </div>
+        <div class="card">
+          <div id="userLoader" class="spinner" style="display: none;"></div>
+          <p id="userStatus" class="message" style="display: none;"></p>
+          <form class="form" id="userForm">
+            <div class="grid two">
+              <div class="field">
+                <label for="userFirstName">First name</label>
+                <input type="text" id="userFirstName" name="firstName" placeholder="First name" />
+              </div>
+              <div class="field">
+                <label for="userLastName">Last name</label>
+                <input type="text" id="userLastName" name="lastName" placeholder="Last name" />
+              </div>
+            </div>
+            <div class="grid two">
+              <div class="field">
+                <label for="userUsername">Username</label>
+                <input type="text" id="userUsername" name="username" placeholder="Username" />
+              </div>
+              <div class="field">
+                <label for="userEmail">Email</label>
+                <input type="email" id="userEmail" name="email" placeholder="Email" />
+              </div>
+            </div>
+            <div class="grid two">
+              <div class="field">
+                <label>Roles</label>
+                <p id="userRoles" class="chip">—</p>
+              </div>
+              <div class="field">
+                <label>Created / Last login</label>
+                <p id="userMeta" class="chip">—</p>
+              </div>
+            </div>
+            <button type="button" id="userUpdateBtn" class="btn" disabled title="Coming soon">
+              Update user
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <div id="footerContainer"></div>
+  </body>
+</html>

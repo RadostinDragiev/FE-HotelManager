@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rooms | Hotel Manager</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/app.js" defer></script>
+    <script src="/js/rooms.js" defer></script>
+  </head>
+  <body>
+    <div id="headerContainer"></div>
+    <main>
+      <section class="hero">
+        <h1 class="page-title">Rooms</h1>
+        <p class="page-subtitle">Live view of every room with status and rates.</p>
+        <div class="card">
+          <div id="roomsLoader" class="spinner" style="display: none;"></div>
+          <p id="roomsStatus" class="message" style="display: none;"></p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Room</th>
+                  <th>Type</th>
+                  <th>Rate</th>
+                  <th>Status</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody id="roomsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="footerContainer"></div>
+  </body>
+</html>
