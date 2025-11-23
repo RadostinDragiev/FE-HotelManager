@@ -3,7 +3,7 @@ const App = (function () {
     token: "hotel-manager-token",
     user: "hotel-manager-user",
   };
-  const apiBase = "http://localhost:8080";
+  const apiBase = "https://hotel-manager-o0ip.onrender.com";
 
   function getStoredUser() {
     const raw = localStorage.getItem(STORAGE_KEYS.user);
