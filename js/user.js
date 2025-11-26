@@ -12,7 +12,9 @@ $(function () {
   const $lastName = $("#userLastName");
   const $username = $("#userUsername");
   const $email = $("#userEmail");
-  const $roles = $("#userRoles");
+  const $rolesList = $("#userRolesList");
+  const $rolesSelect = $("#availableRoles");
+  const $addRoleBtn = $("#addRoleBtn");
   const $meta = $("#userMeta");
   const $updateBtn = $("#userUpdateBtn");
 
@@ -21,6 +23,8 @@ $(function () {
 
   const $status = $("#userStatus");
   const $loader = $("#userLoader");
+  let allRoles = [];
+  let userRoles = [];
 
   if (!id) {
     $status.text("Missing user id.").addClass("message error").show();
@@ -31,8 +35,13 @@ $(function () {
     $status.text("").removeClass("error success").hide();
     $loader.show();
     try {
-      const data = await App.authFetch(`/api/users/${encodeURIComponent(id)}`);
+      const [roles, data] = await Promise.all([
+        App.authFetch(`/api/roles`).catch(() => []),
+        App.authFetch(`/api/users/${encodeURIComponent(id)}`),
+      ]);
+      allRoles = Array.isArray(roles) ? roles : [];
       fillUser(data);
+      renderRoleControls();
     } catch (err) {
       $status.text(err.message || "Could not load user.").addClass("message error").show();
     } finally {
@@ -47,15 +56,15 @@ $(function () {
     const email = user?.email || "";
     const created = formatDate(user?.createdDateTime);
     const lastLogin = formatDate(user?.lastLoginDateTime);
-    const roles = formatRoles(user?.roles);
+    userRoles = toRoleNames(user?.roles);
 
     $firstName.val(firstName);
     $lastName.val(lastName);
     $username.val(username);
     $email.val(email);
-    $roles.text(roles);
     $meta.text(`${created} / ${lastLogin}`);
     $updateBtn.prop("disabled", true);
+    renderRoleControls();
   }
 
   function formatDate(value) {
@@ -75,6 +84,67 @@ $(function () {
       .filter(Boolean)
       .join(", ");
   }
+
+  function toRoleNames(roles) {
+    if (!Array.isArray(roles)) return [];
+    const names = roles
+      .map((r) => (typeof r === "string" ? r : r?.name))
+      .filter(Boolean)
+      .map((n) => String(n).trim().toUpperCase());
+    return Array.from(new Set(names));
+  }
+
+  function formatRoleLabel(name) {
+    if (!name) return "";
+    const lower = name.toLowerCase();
+    return lower.charAt(0).toUpperCase() + lower.slice(1);
+  }
+
+  function renderRoleControls() {
+    $rolesList.empty();
+    if (!userRoles.length) {
+      $rolesList.append('<span class="muted">No roles</span>');
+    } else {
+      userRoles.forEach((role) => {
+        const $pill = $('<span class="pill"></span>');
+        $pill.append(`<span>${formatRoleLabel(role)}</span>`);
+        const $remove = $('<button type="button" class="remove-pill" aria-label="Remove role">×</button>');
+        $remove.on("click", function () {
+          userRoles = userRoles.filter((r) => r !== role);
+          renderRoleControls();
+        });
+        $pill.append($remove);
+        $rolesList.append($pill);
+      });
+    }
+
+    const available = allRoles
+      .map((r) => ({ value: (r?.name || "").toUpperCase(), label: formatRoleLabel(r?.name) }))
+      .filter((r) => r.value && !userRoles.includes(r.value));
+
+    $rolesSelect.empty();
+    if (!available.length) {
+      $rolesSelect.append('<option value="">No more roles</option>');
+      $rolesSelect.prop("disabled", true);
+      $addRoleBtn.prop("disabled", true);
+    } else {
+      $rolesSelect.prop("disabled", false);
+      $addRoleBtn.prop("disabled", false);
+      $rolesSelect.append('<option value="">Select role</option>');
+      available.forEach((role) => {
+        $rolesSelect.append(`<option value="${role.value}">${role.label}</option>`);
+      });
+    }
+  }
+
+  $addRoleBtn.on("click", function () {
+    const value = $rolesSelect.val();
+    if (!value) return;
+    if (!userRoles.includes(value)) {
+      userRoles.push(value);
+      renderRoleControls();
+    }
+  });
 
   loadUser();
 });

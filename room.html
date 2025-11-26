@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Room Details | Hotel Manager</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/app.js" defer></script>
+    <script src="/js/room.js" defer></script>
+  </head>
+  <body>
+    <div id="headerContainer"></div>
+    <main>
+      <section class="hero">
+        <div class="hero-header">
+          <div>
+            <h1 class="page-title">Room details</h1>
+            <p class="page-subtitle">View information about this room.</p>
+          </div>
+          <a class="btn secondary" href="/rooms.html">Back to rooms</a>
+        </div>
+        <div class="card">
+          <div id="roomLoader" class="spinner" style="display: none;"></div>
+          <p id="roomStatusMsg" class="message" style="display: none;"></p>
+          <div class="grid two">
+            <div>
+              <p class="muted">Room number</p>
+              <p id="roomNumber" class="chip">—</p>
+              <p class="muted">Room type</p>
+              <p id="roomType" class="chip">—</p>
+              <p class="muted">Status</p>
+              <p id="roomStatus" class="chip">—</p>
+              <p class="muted">Capacity</p>
+              <p id="roomCapacity" class="chip">—</p>
+            </div>
+            <div>
+              <p class="muted">Bed types</p>
+              <p id="roomBeds" class="chip">—</p>
+              <p class="muted">Price per night</p>
+              <p id="roomPrice" class="chip">—</p>
+              <p class="muted">Created / Updated</p>
+              <p id="roomDates" class="chip">—</p>
+            </div>
+          </div>
+          <div class="field">
+            <label>Description</label>
+            <p id="roomDescription" class="muted">—</p>
+          </div>
+          <div class="field">
+            <label>Photos</label>
+            <div id="roomPhotos" class="photo-grid"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="footerContainer"></div>
+  </body>
+</html>

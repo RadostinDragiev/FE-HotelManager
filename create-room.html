@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Room | Hotel Manager</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/app.js" defer></script>
+    <script src="/js/create-room.js" defer></script>
+  </head>
+  <body>
+    <div id="headerContainer"></div>
+    <main>
+      <section class="hero">
+        <div class="hero-header">
+          <div>
+            <h1 class="page-title">Create room</h1>
+            <p class="page-subtitle">Add a new room to inventory.</p>
+          </div>
+          <a class="btn secondary" href="/rooms.html">Back to rooms</a>
+        </div>
+        <div class="card">
+          <div id="createRoomLoader" class="spinner" style="display: none;"></div>
+          <p id="createRoomStatus" class="message" style="display: none;"></p>
+          <form id="createRoomForm" class="form">
+            <div class="field">
+              <label for="roomNumber">Room number</label>
+              <input type="text" id="roomNumber" name="roomNumber" placeholder="e.g. 102" required />
+            </div>
+            <div class="field">
+              <label for="roomType">Room type</label>
+              <select id="roomType" name="roomType" required></select>
+            </div>
+            <div class="field">
+              <label>Bed types</label>
+              <div id="bedTypes" class="pill-group"></div>
+            </div>
+            <div class="field">
+              <label for="roomStatus">Status</label>
+              <select id="roomStatus" name="roomStatus" required>
+                <option value="">Select status</option>
+                <option value="AVAILABLE">Available</option>
+                <option value="UNDER_CONSTRUCTION">Under construction</option>
+                <option value="CLEANING">Cleaning</option>
+              </select>
+            </div>
+            <button type="submit" class="btn">Create room</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <div id="footerContainer"></div>
+  </body>
+</html>

@@ -230,6 +230,10 @@ a {
   box-shadow: 0 8px 20px rgba(52, 211, 153, 0.25);
 }
 
+.btn.small {
+  padding: 10px 12px;
+}
+
 .btn.secondary {
   background: transparent;
   color: var(--text);
@@ -276,6 +280,76 @@ tr.clickable {
 
 tr.clickable:hover {
   background: rgba(52, 211, 153, 0.08);
+}
+
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  font-weight: 600;
+}
+
+.pill .remove-pill {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 4px;
+}
+
+.pill .remove-pill:hover {
+  color: var(--danger);
+}
+
+.roles-control {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-role {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.add-role select {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(17, 24, 39, 0.65);
+  color: var(--text);
+}
+
+.add-role select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.photo-grid img.thumb {
+  width: 100%;
+  max-height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--border);
 }
 
 .status-pill {

@@ -14,24 +14,57 @@
     <div id="headerContainer"></div>
     <main>
       <section class="hero">
-        <h1 class="page-title">Rooms</h1>
-        <p class="page-subtitle">Live view of every room with status and rates.</p>
+        <div class="hero-header">
+          <div>
+            <h1 class="page-title">Rooms</h1>
+            <p class="page-subtitle">Live view of every room with status and rates.</p>
+          </div>
+          <button
+            id="createRoomBtn"
+            class="btn"
+            type="button"
+            data-roles="ADMINISTRATOR,MANAGER"
+            title="Create a new room"
+          >
+            Create room
+          </button>
+        </div>
         <div class="card">
           <div id="roomsLoader" class="spinner" style="display: none;"></div>
           <p id="roomsStatus" class="message" style="display: none;"></p>
+          <div class="grid two">
+            <div class="field">
+              <label for="filterType">Room type</label>
+              <select id="filterType">
+                <option value="">All types</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="filterStatus">Status</label>
+              <select id="filterStatus">
+                <option value="">All statuses</option>
+                <option value="AVAILABLE">Available</option>
+                <option value="UNDER_CONSTRUCTION">Under construction</option>
+                <option value="CLEANING">Cleaning</option>
+              </select>
+            </div>
+          </div>
           <div class="table-wrap">
             <table>
               <thead>
                 <tr>
                   <th>Room</th>
                   <th>Type</th>
-                  <th>Rate</th>
                   <th>Status</th>
-                  <th>Notes</th>
                 </tr>
               </thead>
               <tbody id="roomsTableBody"></tbody>
             </table>
+          </div>
+          <div class="pagination">
+            <button id="roomsPrev" class="page-btn" type="button">Previous</button>
+            <span id="roomsPageIndicator" class="muted">Page 1 of 1</span>
+            <button id="roomsNext" class="page-btn" type="button">Next</button>
           </div>
         </div>
       </section>

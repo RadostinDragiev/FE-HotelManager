@@ -48,7 +48,13 @@
             <div class="grid two">
               <div class="field">
                 <label>Roles</label>
-                <p id="userRoles" class="chip">—</p>
+                <div class="roles-control">
+                  <div id="userRolesList" class="pill-group"></div>
+                  <div class="add-role">
+                    <select id="availableRoles"></select>
+                    <button type="button" id="addRoleBtn" class="btn small">Add role</button>
+                  </div>
+                </div>
               </div>
               <div class="field">
                 <label>Created / Last login</label>
