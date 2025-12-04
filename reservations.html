@@ -4,26 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reservations | Hotel Manager</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/pine-cone-logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/index-landing.css" />
+    <link rel="stylesheet" href="/css/reservations-landing.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/js/app.js" defer></script>
     <script src="/js/reservations.js" defer></script>
   </head>
-  <body>
+  <body class="reservations-landing">
     <div id="headerContainer"></div>
     <main>
-      <section class="hero">
-        <div class="hero-header">
+      <section class="reservations-hero">
+        <div class="reservations-header">
           <div>
-            <h1 class="page-title">Reservations</h1>
-            <p class="page-subtitle">Manage incoming and confirmed reservations.</p>
+            <div class="eyebrow auth-eyebrow"><i class="fa-solid fa-calendar-check"></i> Reservations</div>
+            <h1>Manage reservations</h1>
+            <p class="lead">Filter and review guest stays across the property.</p>
           </div>
         </div>
-        <div class="card">
+        <div class="reservations-panel">
           <div id="reservationsLoader" class="spinner" style="display: none;"></div>
           <p id="reservationsStatus" class="message" style="display: none;"></p>
-          <div class="grid two filters">
+          <div class="filters-grid">
             <div class="field">
               <label for="filterResStatus">Status</label>
               <select id="filterResStatus" class="styled-select">
@@ -61,7 +71,7 @@
               </select>
             </div>
           </div>
-          <div class="table-wrap">
+          <div class="table-wrap light">
             <table>
               <thead>
                 <tr>

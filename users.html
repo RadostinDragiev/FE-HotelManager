@@ -4,27 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Users | Hotel Manager</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/pine-cone-logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/index-landing.css" />
+    <link rel="stylesheet" href="/css/users-landing.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/js/app.js" defer></script>
     <script src="/js/users.js" defer></script>
   </head>
-  <body>
+  <body class="users-landing">
     <div id="headerContainer"></div>
     <main>
-      <section class="hero">
-        <div class="hero-header">
+      <section class="users-hero">
+        <div class="users-header">
           <div>
-            <h1 class="page-title">Users</h1>
-            <p class="page-subtitle">Directory access for administrators and managers.</p>
+            <div class="eyebrow auth-eyebrow"><i class="fa-solid fa-users"></i> Users</div>
+            <h1>Users</h1>
+            <p class="lead">Directory access for administrators and managers.</p>
           </div>
-          <button id="createUserBtn" class="btn" type="button">Create new user</button>
+          <button id="createUserBtn" class="primary-btn" type="button">Create new user</button>
         </div>
-        <div class="card">
+        <div class="users-panel">
           <div id="usersLoader" class="spinner" style="display: none;"></div>
           <p id="usersStatus" class="message" style="display: none;"></p>
-          <div class="table-wrap">
+          <div class="table-wrap light">
             <table>
               <thead>
                 <tr>

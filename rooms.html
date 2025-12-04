@@ -4,24 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rooms | Hotel Manager</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/pine-cone-logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/index-landing.css" />
+    <link rel="stylesheet" href="/css/rooms-landing.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/js/app.js" defer></script>
     <script src="/js/rooms.js" defer></script>
   </head>
-  <body>
+  <body class="rooms-landing">
     <div id="headerContainer"></div>
     <main>
-      <section class="hero">
-        <div class="hero-header">
+      <section class="rooms-hero">
+        <div class="rooms-header">
           <div>
-            <h1 class="page-title">Rooms</h1>
-            <p class="page-subtitle">Live view of every room with status and rates.</p>
+            <div class="eyebrow auth-eyebrow"><i class="fa-solid fa-door-open"></i> Rooms</div>
+            <h1>Rooms</h1>
+            <p class="lead">Live view of every room with status and types.</p>
           </div>
           <button
             id="createRoomBtn"
-            class="btn"
+            class="primary-btn"
             type="button"
             data-roles="ADMINISTRATOR,MANAGER"
             title="Create a new room"
@@ -29,10 +39,10 @@
             Create room
           </button>
         </div>
-        <div class="card">
+        <div class="rooms-panel">
           <div id="roomsLoader" class="spinner" style="display: none;"></div>
           <p id="roomsStatus" class="message" style="display: none;"></p>
-          <div class="grid two filters">
+          <div class="filters-grid">
             <div class="field">
               <label for="filterType">Room type</label>
               <select id="filterType" class="styled-select">
@@ -49,7 +59,7 @@
               </select>
             </div>
           </div>
-          <div class="table-wrap">
+          <div class="table-wrap light">
             <table>
               <thead>
                 <tr>

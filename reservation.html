@@ -4,52 +4,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reservation Details | Hotel Manager</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/pine-cone-logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/index-landing.css" />
+    <link rel="stylesheet" href="/css/reservations-landing.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/js/app.js" defer></script>
     <script src="/js/reservation.js" defer></script>
   </head>
-  <body>
+  <body class="reservations-landing">
     <div id="headerContainer"></div>
     <main>
-      <section class="hero">
-        <div class="hero-header">
+      <section class="reservations-hero">
+        <div class="reservations-header">
           <div>
-            <h1 class="page-title">Reservation details</h1>
-            <p class="page-subtitle">View reservation information and payments.</p>
+            <div class="eyebrow auth-eyebrow"><i class="fa-solid fa-id-card"></i> Reservation details</div>
+            <h1>Reservation</h1>
+            <p class="lead">Review guest information, room types, and payments.</p>
           </div>
-          <a class="btn secondary" href="/reservations.html">Back to reservations</a>
         </div>
-        <div class="card">
+        <div class="reservations-panel">
           <div id="reservationLoader" class="spinner" style="display: none;"></div>
           <p id="reservationStatusMsg" class="message" style="display: none;"></p>
+          <div class="actions-row">
+            <a class="btn secondary" href="/reservations.html">Back to reservations</a>
+          </div>
           <div class="grid two">
             <div>
               <p class="muted">Guest</p>
-              <p id="resGuest" class="chip">—</p>
+              <p id="resGuest" class="chip light">—</p>
               <p class="muted">Email</p>
-              <p id="resEmail" class="chip">—</p>
+              <p id="resEmail" class="chip light">—</p>
               <p class="muted">Phone</p>
-              <p id="resPhone" class="chip">—</p>
+              <p id="resPhone" class="chip light">—</p>
             </div>
             <div>
               <p class="muted">Status</p>
-              <p id="resStatus" class="chip">—</p>
+              <p id="resStatus" class="chip light">—</p>
               <p class="muted">Guests</p>
-              <p id="resGuests" class="chip">—</p>
+              <p id="resGuests" class="chip light">—</p>
               <p class="muted">Dates</p>
-              <p id="resDates" class="chip">—</p>
+              <p id="resDates" class="chip light">—</p>
             </div>
           </div>
           <div class="grid two">
             <div>
               <p class="muted">Total cost</p>
-              <p id="resCost" class="chip">—</p>
+              <p id="resCost" class="chip light">—</p>
             </div>
             <div>
               <p class="muted">Paid / Pending</p>
-              <p id="resPaymentsSummary" class="chip">—</p>
+              <p id="resPaymentsSummary" class="chip light">—</p>
             </div>
           </div>
           <div class="field">
@@ -63,7 +75,7 @@
               </div>
               <button id="addPaymentBtn" class="btn small" type="button">Add payment</button>
             </div>
-            <div class="table-wrap">
+            <div class="table-wrap light">
               <table>
                 <thead>
                   <tr>
@@ -79,7 +91,7 @@
           </div>
           <div class="field top-spaced">
             <label>Created</label>
-            <p id="resCreated" class="chip">—</p>
+            <p id="resCreated" class="chip light">—</p>
           </div>
         </div>
       </section>

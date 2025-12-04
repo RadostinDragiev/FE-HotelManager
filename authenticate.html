@@ -4,20 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign in | Hotel Manager</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/pine-cone-logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/index-landing.css" />
+    <link rel="stylesheet" href="/css/auth-landing.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/js/app.js" defer></script>
     <script src="/js/authenticate.js" defer></script>
   </head>
-  <body>
+  <body class="auth-landing">
     <div id="headerContainer"></div>
     <main>
-      <section class="hero">
-        <h1 class="page-title">Welcome back</h1>
-        <p class="page-subtitle">Access your workspace to manage the rooms effortlessly.</p>
-        <div class="card">
-          <form id="loginForm" class="form">
+      <section class="auth-hero">
+        <div class="auth-panel">
+          <div class="auth-header">
+            <div class="eyebrow auth-eyebrow"><i class="fa-solid fa-key"></i> Hotel Manager</div>
+            <h1>Welcome back</h1>
+            <p>Access your workspace to manage rooms, reservations, and guests.</p>
+          </div>
+          <form id="loginForm" class="auth-form">
             <div class="field">
               <label for="username">Username</label>
               <input type="text" id="username" name="username" placeholder="Username" required />
@@ -27,8 +39,18 @@
               <input type="password" id="password" name="password" placeholder="Password" required />
             </div>
             <p id="loginMessage" class="message" style="display: none;"></p>
-            <button class="btn" id="loginSubmit" type="submit">Sign in</button>
+            <button class="primary-btn" id="loginSubmit" type="submit">Sign in</button>
           </form>
+          <div class="auth-footnote">
+            <i class="fa-solid fa-lock"></i> Secure access for authorized staff only.
+          </div>
+        </div>
+        <div class="auth-aside">
+          <div class="auth-stats">
+            <div class="stat-card"><strong>24/7</strong><span>Front desk control</span></div>
+            <div class="stat-card"><strong>Granular</strong><span>Role-based access</span></div>
+            <div class="stat-card"><strong>Secure</strong><span>Protected workspace</span></div>
+          </div>
         </div>
       </section>
     </main>

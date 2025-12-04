@@ -1,0 +1,142 @@
+.auth-landing {
+  background: linear-gradient(180deg, #f5f7f3 0%, #e7eee7 100%);
+  color: #0f2b1c;
+  font-family: "Manrope", system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+.auth-landing main {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.auth-hero {
+  display: grid;
+  grid-template-columns: minmax(340px, 520px) 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.auth-panel {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  display: grid;
+  gap: 16px;
+  border: 1px solid #e6ede3;
+}
+
+.auth-header h1 {
+  font-family: "Cormorant Garamond", serif;
+  margin: 10px 0 4px;
+  font-size: clamp(28px, 3vw, 38px);
+  letter-spacing: 0.01em;
+}
+
+.auth-header p {
+  margin: 0;
+  color: #55625a;
+  line-height: 1.5;
+}
+
+.auth-eyebrow {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #e3f1e5;
+  color: #1f402c;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.auth-form {
+  display: grid;
+  gap: 12px;
+}
+
+.auth-form .field {
+  font-weight: 700;
+  color: #55625a;
+}
+
+.auth-form .field input {
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid #dfe4dc;
+  background: #f8faf7;
+  color: #0f2b1c;
+  font-weight: 700;
+}
+
+.auth-form .field input:focus {
+  outline: none;
+  border-color: #0f2b1c;
+}
+
+.auth-form .message {
+  margin: 0;
+}
+
+.auth-footnote {
+  color: #55625a;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.auth-aside {
+  display: grid;
+  align-items: center;
+}
+
+.auth-stats {
+  display: grid;
+  gap: 12px;
+}
+
+.auth-stats .stat-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px 16px;
+  border: 1px solid #e3eadf;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 900px) {
+  .auth-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Lighten header from app on this page */
+.auth-landing .topbar {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid #e6ede3;
+}
+
+.auth-landing .nav-link {
+  color: #55625a;
+}
+
+.auth-landing .nav-link:hover,
+.auth-landing .nav-link.active {
+  color: #0f2b1c;
+  background: #e3eae1;
+  border-color: transparent;
+}
+
+.auth-landing .logout-btn {
+  color: #55625a;
+  border-color: #e0e6de;
+}
+
+.auth-landing .logout-btn:hover {
+  color: #0f2b1c;
+  border-color: #0f2b1c;
+}

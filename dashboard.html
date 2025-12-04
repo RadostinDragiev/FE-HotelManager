@@ -4,18 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | Hotel Manager</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/pine-cone-logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/index-landing.css" />
+    <link rel="stylesheet" href="/css/dashboard-landing.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/js/app.js" defer></script>
     <script src="/js/dashboard.js" defer></script>
   </head>
-  <body>
+  <body class="dashboard-landing">
     <div id="headerContainer"></div>
     <main>
-      <section class="hero">
-        <h1 class="page-title">Dashboard</h1>
-        <p class="page-subtitle">Use the navigation above to jump into rooms or profile.</p>
+      <section class="dashboard-hero">
+        <div class="dashboard-panel">
+          <div class="eyebrow auth-eyebrow"><i class="fa-solid fa-gauge"></i> Control center</div>
+          <h1>Dashboard</h1>
+          <p class="lead">Use the navigation to manage rooms, reservations, and user settings.</p>
+          <div class="dashboard-grid">
+            <div class="stat-card">
+              <strong><i class="fa-solid fa-door-open"></i> Rooms</strong>
+              <span>View availability, rates, and statuses.</span>
+            </div>
+            <div class="stat-card">
+              <strong><i class="fa-solid fa-calendar-check"></i> Reservations</strong>
+              <span>Track guest stays and requests.</span>
+            </div>
+            <div class="stat-card">
+              <strong><i class="fa-solid fa-user-shield"></i> Profile</strong>
+              <span>Update your account and password.</span>
+            </div>
+          </div>
+          <div class="cta-row">
+            <a class="primary-btn" href="/rooms.html">Go to Rooms</a>
+            <a class="cta-outline" href="/reservations.html">Go to Reservations</a>
+          </div>
+        </div>
       </section>
     </main>
     <div id="footerContainer"></div>

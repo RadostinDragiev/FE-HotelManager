@@ -4,44 +4,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Room Details | Hotel Manager</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/pine-cone-logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/index-landing.css" />
+    <link rel="stylesheet" href="/css/rooms-landing.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="/js/app.js" defer></script>
     <script src="/js/room.js" defer></script>
   </head>
-  <body>
+  <body class="rooms-landing">
     <div id="headerContainer"></div>
     <main>
-      <section class="hero">
-        <div class="hero-header">
+      <section class="rooms-hero">
+        <div class="rooms-header">
           <div>
-            <h1 class="page-title">Room details</h1>
-            <p class="page-subtitle">View information about this room.</p>
+            <div class="eyebrow auth-eyebrow"><i class="fa-solid fa-door-open"></i> Room details</div>
+            <h1>Room</h1>
+            <p class="lead">View information about this room.</p>
           </div>
-          <a class="btn secondary" href="/rooms.html">Back to rooms</a>
         </div>
-        <div class="card">
+        <div class="rooms-panel">
           <div id="roomLoader" class="spinner" style="display: none;"></div>
           <p id="roomStatusMsg" class="message" style="display: none;"></p>
+          <div class="actions-row">
+            <a class="btn secondary" href="/rooms.html">Back to rooms</a>
+          </div>
           <div class="grid two">
             <div>
               <p class="muted">Room number</p>
-              <p id="roomNumber" class="chip">—</p>
+              <p id="roomNumber" class="chip light">—</p>
               <p class="muted">Room type</p>
-              <p id="roomType" class="chip">—</p>
+              <p id="roomType" class="chip light">—</p>
               <p class="muted">Status</p>
-              <p id="roomStatus" class="chip">—</p>
+              <p id="roomStatus" class="chip light">—</p>
               <p class="muted">Capacity</p>
-              <p id="roomCapacity" class="chip">—</p>
+              <p id="roomCapacity" class="chip light">—</p>
             </div>
             <div>
               <p class="muted">Bed types</p>
-              <p id="roomBeds" class="chip">—</p>
+              <p id="roomBeds" class="chip light">—</p>
               <p class="muted">Price per night</p>
-              <p id="roomPrice" class="chip">—</p>
+              <p id="roomPrice" class="chip light">—</p>
               <p class="muted">Created / Updated</p>
-              <p id="roomDates" class="chip">—</p>
+              <p id="roomDates" class="chip light">—</p>
             </div>
           </div>
           <div class="field">
