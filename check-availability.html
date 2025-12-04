@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pine Cone Boutique | Availability</title>
+  <link rel="icon" type="image/svg+xml" href="pine-cone-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/check-availability.css">
+</head>
+<body>
+  <header>
+    <div class="brand"><div class="spark"><img src="pine-cone-logo.svg" alt="Pine Cone Boutique logo"></div> PINE CONE</div>
+    <div class="crumbs">Check availability</div>
+  </header>
+  <div class="wrap">
+    <div class="hero-card">
+      <div>
+        <div class="badge">Direct booking perks</div>
+        <h1>Choose your suite</h1>
+        <p class="lead">We held keys aside for your dates. Pick the suite that fits your stay.</p>
+        <div class="details" id="bookingDetails"></div>
+        <form class="update-form" id="availabilityForm">
+          <div class="field">
+            <label for="checkin">Check-in</label>
+            <input type="date" id="checkin" name="checkin" required>
+          </div>
+          <div class="field">
+            <label for="checkout">Check-out</label>
+            <input type="date" id="checkout" name="checkout" required>
+          </div>
+          <div class="field">
+            <label for="guests">Guests</label>
+            <select id="guests" name="guests">
+              <option value="1 Guest">1 Guest</option>
+              <option value="2 Guests">2 Guests</option>
+              <option value="3 Guests">3 Guests</option>
+              <option value="4+ Guests">4+ Guests</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="rooms">Rooms</label>
+            <select id="rooms" name="rooms">
+              <option value="1 Room">1 Room</option>
+              <option value="2 Rooms">2 Rooms</option>
+              <option value="3 Rooms">3 Rooms</option>
+            </select>
+          </div>
+          <button class="cta" type="submit">Update dates</button>
+        </form>
+      </div>
+      <div class="pill"><i class="fa-solid fa-mug-hot"></i> Welcome cedar latte on arrival</div>
+    </div>
+
+    <div class="timeline">
+      <div class="table-wrap">
+        <table id="timelineTable">
+          <thead id="timelineHead"></thead>
+          <tbody id="timelineBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <a class="back" href="index.html#booking"><i class="fa-solid fa-arrow-left"></i> Back to booking</a>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="/js/check-availability.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pine Cone Boutique | Forest Retreat</title>
+  <link rel="icon" type="image/svg+xml" href="pine-cone-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --ink: #0f2b1c;
+      --sand: #eef1e8;
+      --gold: #d3b06e;
+      --sky: #6ba57a;
+      --card: #ffffff;
+      --muted: #55625a;
+      --bg: linear-gradient(180deg, #f5f7f3 0%, #e7eee7 100%);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { max-width: 100%; display: block; }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      transition: all 0.3s ease;
+    }
+
+    .nav-shell {
+      margin: 14px auto;
+      padding: 14px 22px;
+      max-width: 1180px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 10px 40px rgba(31, 36, 51, 0.12);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    header.scrolled .nav-shell {
+      margin: 6px auto;
+      padding: 12px 18px;
+      box-shadow: 0 8px 32px rgba(31, 36, 51, 0.18);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      font-size: 22px;
+    }
+
+    .brand .spark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 30%, #234431, #0f2b1c);
+      display: grid;
+      place-items: center;
+      color: #d6c69d;
+      font-size: 0;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .brand .spark img { width: 100%; height: 100%; object-fit: cover; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    nav a { padding: 8px 10px; border-radius: 12px; color: var(--muted); }
+    nav a:hover { color: var(--ink); background: #e3eae1; }
+
+    .cta {
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #0f2b1c, #1f4a30);
+      color: #fff;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 30px rgba(15,43,28,0.28);
+    }
+
+    .menu-toggle { display: none; }
+
+    .hero {
+      position: relative;
+      padding: 170px 24px 140px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(15, 43, 28, 0.8) 0%, rgba(24, 55, 37, 0.5) 40%, rgba(25,64,41,0.18) 75%), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80') center/cover;
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08), transparent 40%);
+      z-index: -1;
+    }
+
+    .hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: start;
+      color: #fff;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 4vw, 58px);
+      line-height: 1.05;
+      margin: 16px 0 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .lead {
+      font-size: 16px;
+      color: rgba(255,255,255,0.92);
+      max-width: 540px;
+      margin-bottom: 24px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.08);
+      padding: 14px 16px;
+      border-radius: 14px;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 22px;
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: 0.03em;
+    }
+
+    .booking-card {
+      background: #ffffff;
+      color: var(--ink);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.25);
+      display: grid;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .booking-card::after {
+      content: '';
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(201,161,92,0.16), transparent 60%);
+      top: -40px;
+      right: -60px;
+      z-index: 0;
+    }
+
+    .booking-card h3 {
+      margin: 0 0 4px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+    }
+
+    .booking-card p { margin: 0 0 12px; color: var(--muted); }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .field { display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
+    .field label { color: var(--muted); font-weight: 600; }
+
+    .field input, .field select {
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid #dfe4ec;
+      background: #f8fafc;
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    .primary-btn {
+      border: none;
+      background: linear-gradient(135deg, #103321, #1f4a30);
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 15px 18px;
+      border-radius: 14px;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(16,51,33,0.32);
+      margin-top: 12px;
+      display: block;
+      width: 100%;
+    }
+
+    .section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 90px 24px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 3vw, 44px);
+      letter-spacing: 0.01em;
+    }
+
+    .section-header p { max-width: 540px; color: var(--muted); margin: 0; }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .room-card {
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+      display: grid;
+      grid-template-rows: 180px auto;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .room-card:hover { transform: translateY(-4px); box-shadow: 0 18px 42px rgba(0,0,0,0.12); }
+
+    .room-media { position: relative; background: #0f1729; }
+    .room-media img { width: 100%; height: 100%; object-fit: cover; }
+    .badge { position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.55); color: #fff; padding: 8px 12px; border-radius: 12px; font-weight: 700; }
+
+    .room-body { padding: 16px; display: grid; gap: 10px; }
+
+    .room-body h3 { margin: 0; font-size: 18px; }
+    .room-meta { color: var(--muted); font-size: 13px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .price { font-weight: 700; color: var(--ink); }
+
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 999px; background: #e5f1e9; color: #244530; font-weight: 700; font-size: 13px; }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      align-items: center;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 22px;
+      border-radius: 16px;
+      box-shadow: 0 14px 32px rgba(0,0,0,0.07);
+    }
+
+    .list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; color: var(--muted); }
+    .list li { display: flex; gap: 10px; }
+    .list i { color: var(--gold); margin-top: 4px; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .gallery figure { margin: 0; border-radius: 16px; overflow: hidden; position: relative; }
+    .gallery figcaption { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.65)); color: #fff; opacity: 0; display: flex; align-items: flex-end; padding: 14px; transition: opacity 0.2s ease; font-weight: 700; }
+    .gallery figure:hover figcaption { opacity: 1; }
+
+    .testimonial-shell {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .testimonial {
+      background: var(--card);
+      padding: 18px;
+      border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial::after {
+      content: '“';
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 110px;
+      color: rgba(31,36,51,0.08);
+      top: -30px;
+      right: 10px;
+    }
+
+    .testimonial strong { display: block; margin-top: 14px; font-size: 15px; }
+    .testimonial span { color: var(--muted); font-size: 13px; }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .blog-card { background: var(--card); border-radius: 14px; overflow: hidden; box-shadow: 0 12px 28px rgba(0,0,0,0.08); display: grid; grid-template-rows: 160px auto; }
+    .blog-body { padding: 16px; display: grid; gap: 8px; }
+    .blog-body h3 { margin: 0; font-size: 17px; }
+    .blog-meta { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+
+    .cta-banner {
+      position: relative;
+      margin: 60px 24px;
+      background: linear-gradient(120deg, #0f2b1c, #143525 55%, #1f4a30);
+      color: #fff;
+      border-radius: 20px;
+      padding: 38px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+    }
+
+    .cta-banner::after {
+      content: '';
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
+      top: -80px;
+      right: -100px;
+    }
+
+    .cta-banner h3 { margin: 0 0 10px; font-family: 'Cormorant Garamond', serif; font-size: 32px; }
+    .cta-banner p { margin: 0 0 16px; color: rgba(255,255,255,0.86); max-width: 620px; }
+
+    footer {
+      background: #0b1f14;
+      color: #dfe3ef;
+      padding: 40px 24px 60px;
+      margin-top: 40px;
+    }
+
+    .footer-shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .footer-shell h4 { margin: 0 0 10px; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.04em; }
+    .footer-shell p { margin: 0 0 8px; color: #b6c1b8; }
+
+    .social { display: flex; gap: 10px; }
+    .social a { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; background: rgba(255,255,255,0.08); color: #fff; }
+    .social a:hover { background: rgba(255,255,255,0.16); }
+
+    .mobile-nav { display: none; }
+
+    @media (max-width: 960px) {
+      nav { display: none; }
+      .menu-toggle { display: inline-flex; background: #f4f6fb; border: 1px solid #dfe4ec; border-radius: 12px; padding: 10px; }
+      .hero { padding-top: 140px; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .booking-card { order: -1; }
+      .section-header { flex-direction: column; align-items: flex-start; }
+      .cta-banner { margin: 40px 0; }
+      .nav-shell { margin: 10px 14px; }
+      header.scrolled .nav-shell { margin: 2px 14px; }
+      .mobile-nav { display: grid; gap: 10px; padding: 12px 18px 18px; background: #fff; border-radius: 0 0 14px 14px; box-shadow: 0 12px 24px rgba(0,0,0,0.08); }
+      .mobile-nav a { padding: 10px; border-radius: 12px; background: #f6f7fb; font-weight: 700; color: var(--ink); }
+      .mobile-nav .cta { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <header id="top">
+    <div class="nav-shell">
+      <div class="brand"><div class="spark"><img src="pine-cone-logo.svg" alt="Pine Cone Boutique logo"></div> PINE CONE BOUTIQUE</div>
+      <nav>
+        <a href="#suites">Suites</a>
+        <a href="#experience">Experience</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#stories">Stories</a>
+        <a href="/authenticate.html">Login</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+      <a class="cta" href="#booking">Book a stay <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="mobile-nav" hidden>
+      <a href="#suites">Suites</a>
+      <a href="#experience">Experience</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#stories">Stories</a>
+      <a href="/authenticate.html">Login</a>
+      <a class="cta" href="#booking">Book a stay</a>
+    </div>
+  </header>
+
+  <section class="hero" id="booking">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow" style="background:rgba(255,255,255,0.12);"><i class="fa-solid fa-tree"></i> Pine Cone boutique</div>
+        <h1>Forest air, cedar light. Pine Cone Boutique awaits.</h1>
+        <p class="lead">Nestled by evergreen canopies with timbered suites, firelit lounges, and chef-led hearth dining. Crafted for travelers who crave quiet luxury close to nature.</p>
+        <div class="stats">
+          <div class="stat-card"><strong>48</strong><span>Designer suites</span></div>
+          <div class="stat-card"><strong>3</strong><span>Signature restaurants</span></div>
+          <div class="stat-card"><strong>24/7</strong><span>Concierge & valet</span></div>
+        </div>
+      </div>
+      <div class="booking-card">
+        <h3>Book your forest stay</h3>
+        <p>Choose your dates and we will keep your keys and lantern ready.</p>
+        <form id="bookingForm">
+          <div class="field-grid">
+            <div class="field">
+              <label for="checkin">Check-in</label>
+              <input type="date" id="checkin" required>
+            </div>
+            <div class="field">
+              <label for="checkout">Check-out</label>
+              <input type="date" id="checkout" required>
+            </div>
+            <div class="field">
+              <label for="guests">Guests</label>
+              <select id="guests">
+                <option>1 Guest</option>
+                <option selected>2 Guests</option>
+                <option>3 Guests</option>
+                <option>4+ Guests</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="rooms">Rooms</label>
+              <select id="rooms">
+                <option>1 Room</option>
+                <option>2 Rooms</option>
+                <option>3 Rooms</option>
+              </select>
+            </div>
+          </div>
+          <button class="primary-btn" type="submit">Check availability</button>
+        </form>
+        <div class="pill" style="margin-top:8px;"><i class="fa-solid fa-crown"></i> Complimentary welcome bar for direct bookings</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="suites">
+    <div class="section-header">
+      <div>
+        <div class="eyebrow" style="background:#e3f1e5; color:#1f402c;">Suites & Residences</div>
+        <h2>Light-filled suites framed by the pines</h2>
+      </div>
+      <p>Each room layers cedar, wool, and warm brass. Floor-to-ceiling windows open to evergreen terraces while curated art stories the region.</p>
+    </div>
+    <div class="rooms-grid">
+      <article class="room-card">
+        <div class="room-media">
+          <img src="https://images.unsplash.com/photo-1505692069463-5e3405e3e7ee?auto=format&fit=crop&w=800&q=80" alt="Deluxe king suite">
+          <div class="badge">$210 / night</div>
+        </div>
+        <div class="room-body">
+          <h3>Deluxe King Suite</h3>
+          <div class="room-meta"><span>City terrace</span><span>Rain shower</span><span>Breakfast included</span></div>
+          <div class="price">From $210 · Cancel anytime</div>
+        </div>
+      </article>
+      <article class="room-card">
+        <div class="room-media">
+          <img src="https://images.unsplash.com/photo-1501117716987-c8e1ecb210af?auto=format&fit=crop&w=800&q=80" alt="Loft residence">
+          <div class="badge">$340 / night</div>
+        </div>
+        <div class="room-body">
+          <h3>Loft Residence</h3>
+          <div class="room-meta"><span>Kitchenette</span><span>Workspace</span><span>Butler service</span></div>
+          <div class="price">From $340 · Weekly perks</div>
+        </div>
+      </article>
+      <article class="room-card">
+        <div class="room-media">
+          <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80" alt="Pool villa">
+          <div class="badge">$540 / night</div>
+        </div>
+        <div class="room-body">
+          <h3>Poolside Villa</h3>
+          <div class="room-meta"><span>Private plunge</span><span>Outdoor lounge</span><span>Chef's menu</span></div>
+          <div class="price">From $540 · Sunrise yoga</div>
+        </div>
+      </article>
+      <article class="room-card">
+        <div class="room-media">
+          <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80" alt="Atelier penthouse">
+          <div class="badge">$720 / night</div>
+        </div>
+        <div class="room-body">
+          <h3>Atelier Penthouse</h3>
+          <div class="room-meta"><span>Panoramic view</span><span>Marble bath</span><span>Concierge lounge</span></div>
+          <div class="price">From $720 · Late checkout</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="split">
+      <div class="card">
+        <div class="eyebrow" style="background:#fff2e5; color:#5c3b16;">Curated by Pine Cone</div>
+        <h2>Live well, dine slow, unwind deeper</h2>
+        <p style="color:var(--muted);">Campfire tastings at dusk, cedar-sauna rituals, and private forest walks designed with local naturalists. Pine Cone is crafted for travelers who crave design-forward calm.</p>
+        <ul class="list">
+          <li><i class="fa-solid fa-water-ladder"></i><span>Rooftop infinity pool and twilight cabanas</span></li>
+          <li><i class="fa-solid fa-champagne-glasses"></i><span>Chef-led tasting menu featuring coastal produce</span></li>
+          <li><i class="fa-solid fa-spa"></i><span>Wellness floor: sauna, hammam, meditation studio</span></li>
+          <li><i class="fa-solid fa-bicycle"></i><span>Designer bikes for sunrise rides along the boulevard</span></li>
+        </ul>
+      </div>
+      <div class="card" style="background: radial-gradient(circle at 20% 20%, rgba(201,161,92,0.18), transparent 60%), var(--card);">
+        <h3 style="margin-top:0; font-family:'Cormorant Garamond', serif; font-size:24px;">Why guests stay longer</h3>
+        <div class="list">
+          <li><i class="fa-solid fa-door-open"></i>Frictionless mobile check-in and digital keys</li>
+          <li><i class="fa-solid fa-leaf"></i>Sustainably built interiors with recycled fabrics</li>
+          <li><i class="fa-solid fa-wifi"></i>Wi-Fi 6, acoustic treated rooms, ergonomic work nooks</li>
+          <li><i class="fa-solid fa-clock"></i>24/7 concierge, private drivers, curated city maps</li>
+        </div>
+        <div class="pill" style="margin-top:16px; background:#123622; color:#f2f7f4;">Book 5 nights · Save 15% + breakfast</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="gallery">
+    <div class="section-header">
+      <div>
+        <div class="eyebrow" style="background:#e8f7ff; color:#214b60;">Gallery</div>
+        <h2>Spaces that feel like an art book</h2>
+      </div>
+      <p>Angles, sunlight, and textures captured by our resident photographer. Swap default wallpaper for living, breathing design.</p>
+    </div>
+    <div class="gallery">
+      <figure>
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80" alt="Lobby">
+        <figcaption>Grand lobby atrium</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=900&q=80" alt="Pool">
+        <figcaption>Rooftop pool dusk</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1523419400524-2230bcb0c736?auto=format&fit=crop&w=900&q=80" alt="Dining">
+        <figcaption>Chef's table</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=900&q=80" alt="Suite">
+        <figcaption>Signature suite</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=900&q=80" alt="Spa">
+        <figcaption>Wellness spa</figcaption>
+      </figure>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=900&q=80" alt="Bar">
+        <figcaption>Velvet bar</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="stories">
+    <div class="section-header">
+      <div>
+        <div class="eyebrow" style="background:#e6fff3; color:#1b4d37;">Guest stories</div>
+        <h2>Proof that details make the stay</h2>
+      </div>
+      <p>Design, service, location. Our guests keep us honest—here is what they said after slow mornings with us.</p>
+    </div>
+    <div class="testimonial-shell" data-slider>
+      <article class="testimonial is-active">
+        <p>“Pine Cone feels like a design gallery in the woods. The vinyl library and the espresso bar downstairs set the tone for the day.”</p>
+        <strong>Amelia Trent</strong>
+        <span>Designer, weekend stay</span>
+      </article>
+      <article class="testimonial">
+        <p>“The rooftop hydrotherapy session at dusk was worth the trip alone. Rooms are silent, beds are cloud-soft, and check-in took 90 seconds.”</p>
+        <strong>Markus Lee</strong>
+        <span>Founder, business trip</span>
+      </article>
+      <article class="testimonial">
+        <p>“We booked the Loft Residence for a week. Butler service, sunrise bike rides, and the chef's tasting menu—easily our favorite city stay.”</p>
+        <strong>Sienna & Luca</strong>
+        <span>Couple, extended stay</span>
+      </article>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <h3>Reserve direct and unlock member nights</h3>
+    <p>Join Pine Circle to earn late checkouts, welcome amenities, and private invites to tastings and forest walks.</p>
+    <a class="cta" href="#booking" style="background:linear-gradient(135deg,#d3b06e,#f0d18b); color:#0f2b1c; box-shadow:none;">Join Pine Circle</a>
+  </div>
+
+  <footer>
+    <div class="footer-shell">
+      <div>
+        <div class="brand" style="color:#fff;"><div class="spark"><img src="pine-cone-logo.svg" alt="Pine Cone Boutique logo"></div> PINE CONE</div>
+        <p>21 Evergreen Lane, Seaview District<br>+1 (555) 210-8921</p>
+        <div class="social">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Stay</h4>
+        <p>Suites & Residences</p>
+        <p>Wellness & Spa</p>
+        <p>Private Dining</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <p>Concierge & Drivers</p>
+        <p>Meeting Atelier</p>
+        <p>Events & Gatherings</p>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <p>press@sona.stay</p>
+        <p>partnerships@sona.stay</p>
+        <p>Careers</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    (function ($) {
+      const header = $('header');
+      const mobileNav = $('.mobile-nav');
+      const toggle = $('.menu-toggle');
+
+      // Sticky header shrink
+      function onScroll() {
+        if ($(window).scrollTop() > 40) header.addClass('scrolled');
+        else header.removeClass('scrolled');
+      }
+      $(window).on('scroll', onScroll);
+      onScroll();
+
+      // Mobile nav toggle
+      toggle.on('click', function () {
+        const isHidden = mobileNav.is('[hidden]');
+        mobileNav.attr('hidden', !isHidden);
+        $(this).find('i').toggleClass('fa-bars fa-xmark');
+      });
+      mobileNav.find('a').on('click', () => mobileNav.attr('hidden', true));
+
+      // Smooth scroll
+      $('a[href^="#"]').on('click', function (e) {
+        const target = $(this.getAttribute('href'));
+        if (target.length) {
+          e.preventDefault();
+          $('html, body').animate({ scrollTop: target.offset().top - 80 }, 600);
+        }
+      });
+
+      // Testimonials slider
+      const slides = $('[data-slider] .testimonial');
+      let index = 0;
+      function rotate() {
+        slides.removeClass('is-active').css('opacity', 0.4);
+        slides.eq(index).addClass('is-active').css('opacity', 1);
+        index = (index + 1) % slides.length;
+      }
+      setInterval(rotate, 4200);
+      rotate();
+
+      // Demo booking submission
+      $('#bookingForm').on('submit', function (e) {
+        e.preventDefault();
+        const params = new URLSearchParams({
+          checkin: $('#checkin').val(),
+          checkout: $('#checkout').val(),
+          guests: $('#guests').val(),
+          rooms: $('#rooms').val()
+        });
+        window.location.href = `check-availability.html?${params.toString()}`;
+      });
+    })(jQuery);
+  </script>
+</body>
+</html>
