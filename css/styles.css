@@ -324,6 +324,7 @@ tr.clickable:hover {
   align-items: center;
 }
 
+.styled-select,
 .add-role select {
   flex: 1;
   padding: 10px 12px;
@@ -333,6 +334,7 @@ tr.clickable:hover {
   color: var(--text);
 }
 
+.styled-select:focus,
 .add-role select:focus {
   outline: none;
   border-color: var(--accent);
@@ -472,6 +474,10 @@ tr.clickable:hover {
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 14px;
+}
+
+.filters {
+  margin-bottom: 12px;
 }
 
 @media (max-width: 768px) {
