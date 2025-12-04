@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservation Details | Hotel Manager</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/app.js" defer></script>
+    <script src="/js/reservation.js" defer></script>
+  </head>
+  <body>
+    <div id="headerContainer"></div>
+    <main>
+      <section class="hero">
+        <div class="hero-header">
+          <div>
+            <h1 class="page-title">Reservation details</h1>
+            <p class="page-subtitle">View reservation information and payments.</p>
+          </div>
+          <a class="btn secondary" href="/reservations.html">Back to reservations</a>
+        </div>
+        <div class="card">
+          <div id="reservationLoader" class="spinner" style="display: none;"></div>
+          <p id="reservationStatusMsg" class="message" style="display: none;"></p>
+          <div class="grid two">
+            <div>
+              <p class="muted">Guest</p>
+              <p id="resGuest" class="chip">—</p>
+              <p class="muted">Email</p>
+              <p id="resEmail" class="chip">—</p>
+              <p class="muted">Phone</p>
+              <p id="resPhone" class="chip">—</p>
+            </div>
+            <div>
+              <p class="muted">Status</p>
+              <p id="resStatus" class="chip">—</p>
+              <p class="muted">Guests</p>
+              <p id="resGuests" class="chip">—</p>
+              <p class="muted">Dates</p>
+              <p id="resDates" class="chip">—</p>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <p class="muted">Total cost</p>
+              <p id="resCost" class="chip">—</p>
+            </div>
+            <div>
+              <p class="muted">Paid / Pending</p>
+              <p id="resPaymentsSummary" class="chip">—</p>
+            </div>
+          </div>
+          <div class="field">
+            <label>Room types</label>
+            <div class="pill-group" id="resRoomTypes"></div>
+          </div>
+          <div class="field">
+            <label>Payments</label>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Amount</th>
+                    <th>Reason</th>
+                    <th>Status</th>
+                    <th>Created</th>
+                  </tr>
+                </thead>
+                <tbody id="resPaymentsTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="field">
+            <label>Created</label>
+            <p id="resCreated" class="chip">—</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="footerContainer"></div>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservations | Hotel Manager</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/app.js" defer></script>
+    <script src="/js/reservations.js" defer></script>
+  </head>
+  <body>
+    <div id="headerContainer"></div>
+    <main>
+      <section class="hero">
+        <div class="hero-header">
+          <div>
+            <h1 class="page-title">Reservations</h1>
+            <p class="page-subtitle">Manage incoming and confirmed reservations.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div id="reservationsLoader" class="spinner" style="display: none;"></div>
+          <p id="reservationsStatus" class="message" style="display: none;"></p>
+          <div class="grid two filters">
+            <div class="field">
+              <label for="filterResStatus">Status</label>
+              <select id="filterResStatus" class="styled-select">
+                <option value="">All statuses</option>
+                <option value="RESERVATION_REQUEST">Reservation request</option>
+                <option value="RESERVATION_CONFIRMED">Reservation confirmed</option>
+                <option value="CHECKED_IN">Checked in</option>
+                <option value="CHECKED_OUT">Checked out</option>
+                <option value="CANCELED">Canceled</option>
+                <option value="REJECTED">Rejected</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="filterFrom">From date</label>
+              <input type="date" id="filterFrom" />
+            </div>
+            <div class="field">
+              <label for="filterTo">To date</label>
+              <input type="date" id="filterTo" />
+            </div>
+            <div class="field">
+              <label for="sortBy">Sort by</label>
+              <select id="sortBy" class="styled-select">
+                <option value="startDate">Start date</option>
+                <option value="endDate">End date</option>
+                <option value="guestsCount">Guests</option>
+                <option value="reservationStatus">Status</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="sortDir">Direction</label>
+              <select id="sortDir" class="styled-select">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Guests</th>
+                  <th>Status</th>
+                  <th>Start</th>
+                  <th>End</th>
+                </tr>
+              </thead>
+              <tbody id="reservationsTableBody"></tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <button id="reservationsPrev" class="page-btn" type="button">Previous</button>
+            <span id="reservationsPageIndicator" class="muted">Page 1 of 1</span>
+            <button id="reservationsNext" class="page-btn" type="button">Next</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="footerContainer"></div>
+  </body>
+</html>
