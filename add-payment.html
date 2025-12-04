@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Payment | Hotel Manager</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/app.js" defer></script>
+    <script src="/js/add-payment.js" defer></script>
+  </head>
+  <body>
+    <div id="headerContainer"></div>
+    <main>
+      <section class="hero">
+        <div class="hero-header">
+          <div>
+            <h1 class="page-title">Add payment</h1>
+            <p class="page-subtitle">Record a payment for the reservation.</p>
+          </div>
+          <a class="btn secondary" id="backToReservation" href="/reservations.html">Back</a>
+        </div>
+        <div class="card">
+          <div id="addPaymentLoader" class="spinner" style="display: none;"></div>
+          <p id="addPaymentStatus" class="message" style="display: none;"></p>
+          <form id="addPaymentForm" class="form">
+            <div class="field">
+              <label for="paymentAmount">Amount</label>
+              <input type="number" id="paymentAmount" name="amount" min="0" step="0.01" placeholder="Amount" required />
+            </div>
+            <div class="field">
+              <label for="paymentType">Payment type</label>
+              <select id="paymentType" class="styled-select" required></select>
+            </div>
+            <div class="field">
+              <label for="paymentReason">Reason</label>
+              <select id="paymentReason" class="styled-select" required></select>
+            </div>
+            <div class="field">
+              <label for="paymentStatus">Payment status</label>
+              <select id="paymentStatus" class="styled-select" required></select>
+            </div>
+            <div class="field">
+              <label for="paymentNotes">Notes</label>
+              <textarea id="paymentNotes" name="notes" rows="3" placeholder="Notes (optional)"></textarea>
+            </div>
+            <input type="hidden" id="reservationId" name="reservationId" />
+            <div class="field">
+              <label for="roomId">Room ID (optional)</label>
+              <input type="text" id="roomId" name="roomId" placeholder="Room ID" />
+            </div>
+            <button type="submit" class="btn">Save payment</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <div id="footerContainer"></div>
+  </body>
+</html>

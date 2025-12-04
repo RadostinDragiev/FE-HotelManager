@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Details | Hotel Manager</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/js/app.js" defer></script>
+    <script src="/js/payment.js" defer></script>
+  </head>
+  <body>
+    <div id="headerContainer"></div>
+    <main>
+      <section class="hero">
+        <div class="hero-header">
+          <div>
+            <h1 class="page-title">Payment details</h1>
+            <p class="page-subtitle">Review payment information.</p>
+          </div>
+          <a class="btn secondary" id="backToReservation" href="/reservations.html">Back</a>
+        </div>
+        <div class="card">
+          <div id="paymentLoader" class="spinner" style="display: none;"></div>
+          <p id="paymentStatusMsg" class="message" style="display: none;"></p>
+          <div class="grid two">
+            <div>
+              <p class="muted">Amount</p>
+              <p id="payAmount" class="chip">—</p>
+              <p class="muted">Payment type</p>
+              <p id="payType" class="chip">—</p>
+              <p class="muted">Reason</p>
+              <p id="payReason" class="chip">—</p>
+            </div>
+            <div>
+              <p class="muted">Status</p>
+              <p id="payStatus" class="chip">—</p>
+              <p class="muted">Room number</p>
+              <p id="payRoom" class="chip">—</p>
+              <p class="muted">Created</p>
+              <p id="payCreated" class="chip">—</p>
+            </div>
+          </div>
+          <div class="field">
+            <label>Reservation</label>
+            <p id="payReservation" class="chip clickable" title="Open reservation">—</p>
+          </div>
+          <div class="field">
+            <label>Notes</label>
+            <p id="payNotes" class="muted">—</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="footerContainer"></div>
+  </body>
+</html>

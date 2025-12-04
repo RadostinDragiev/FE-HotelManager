@@ -566,3 +566,7 @@ tr.clickable:hover {
 .hidden {
   display: none !important;
 }
+
+.top-spaced {
+  margin-top: 12px;
+}

@@ -11,6 +11,7 @@ $(function () {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
   const loc = params.get("loc");
+  let reservationId = id || null;
 
   const $loader = $("#reservationLoader");
   const $status = $("#reservationStatusMsg");
@@ -35,6 +36,7 @@ $(function () {
   }
 
   function fillReservation(res) {
+    reservationId = res?.uuid || reservationId;
     $("#resGuest").text(formatName(res?.firstName, res?.lastName));
     $("#resEmail").text(res?.email || "—");
     $("#resPhone").text(res?.phone || "—");
@@ -69,8 +71,9 @@ $(function () {
       return;
     }
     list.forEach((p) => {
+      const pid = p?.uuid;
       const $row = $(`
-        <tr>
+        <tr ${pid ? `data-id="${pid}"` : ""} class="${pid ? "clickable" : ""}">
           <td>${formatMoney(p.amount)}</td>
           <td>${formatLabel(p.reason)}</td>
           <td>${formatLabel(p.status)}</td>
@@ -141,6 +144,20 @@ $(function () {
       return null;
     }
   }
+
+  $("#resPaymentsTableBody").on("click", "tr[data-id]", function () {
+    const pid = $(this).data("id");
+    if (pid) {
+      const query = reservationId ? `?id=${encodeURIComponent(pid)}&reservation=${encodeURIComponent(reservationId)}` : `?id=${encodeURIComponent(pid)}`;
+      window.location.href = `/payment.html${query}`;
+    }
+  });
+
+  $("#addPaymentBtn").on("click", function () {
+    if (reservationId) {
+      window.location.href = `/add-payment.html?reservation=${encodeURIComponent(reservationId)}`;
+    }
+  });
 
   loadReservation();
 });
